@@ -1,0 +1,37 @@
+<html>
+ <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	  <script src="/js/main.js">
+        </script>
+
+  </head>
+  <body>
+	<div class="body-wrapper">
+    <img  src="/static/images/mysearch.jpg">
+	<div class="form-wrapper">
+    <form  method="post" name="search_form">
+	  <div><input id="search_input" type=text class=terms name=search_terms rows="1" cols="60" list="suggestions" value="{{search_terms|escape}}" onkeypress="runMagic(event)">
+	  <datalist id="suggestions">
+	  <label> or select from the list
+	  <select name="suggestions" id="suggestions" onchange="updateInput()">
+		</select>
+
+		</datalist>
+	  
+	  
+	  </div>
+      <div><input class="button orange" type="submit" value=" Go ! "></div>
+    </form>
+	</div>
+	<div class="divide"></div>
+	<ul>
+	 {% for result in results %}
+     <li><a href="{{ result|escape }}" >{{ result|escape }}</a> </li> <br>
+    {% endfor %}
+	
+	</ul>
+	
+</div>
+    
+  </body>
+</html>
